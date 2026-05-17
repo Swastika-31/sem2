@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swastika Khatri | UX/UI Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090403;
+      --bg-soft: rgba(10, 5, 3, 0.45);
+      --bg-soft-strong: rgba(13, 7, 4, 0.72);
+      --line: rgba(255, 255, 255, 0.15);
+      --line-warm: rgba(255, 220, 150, 0.15);
+      --text: rgba(255, 250, 244, 0.96);
+      --muted: rgba(255, 245, 232, 0.72);
+      --gold: #d8ab5d;
+      --gold-bright: #f0cc82;
+      --ochre: #b77a2d;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --panel-width: min(36vw, 34rem);
+      --serif: "Bodoni 72", "Bodoni MT", "Didot", Georgia, serif;
+      --display-italic: "Bodoni 72", "Bodoni MT", "Didot", Georgia, serif;
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --ease: 0.4s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+      /* Use the raw background photo with vivid colours and fixed attachment */
+      background-image: url("hero page bg.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 14% 28%, rgba(198, 122, 37, 0.16), transparent 22%),
+        radial-gradient(circle at 40% 18%, rgba(255, 211, 134, 0.09), transparent 18%),
+        radial-gradient(circle at 72% 64%, rgba(77, 36, 20, 0.2), transparent 28%),
+        linear-gradient(135deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.04));
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%, transparent 78%, rgba(0, 0, 0, 0.28) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 26%, transparent 74%, rgba(0, 0, 0, 0.22));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      min-height: 100svh;
+      padding: clamp(1rem, 2vw, 2rem);
+    }
+
+    .name-block {
+      position: absolute;
+      left: clamp(2rem, 7vw, 5rem);
+      bottom: clamp(4rem, 9vw, 7rem);
+      max-width: min(42vw, 34rem);
+      text-transform: lowercase;
+      text-shadow: 0 12px 36px rgba(0, 0, 0, 0.52);
+      width: fit-content;
+      text-align: left;
+    }
+
+    .name-block .first-name {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(5rem, 12vw, 11rem);
+      line-height: 0.82;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: rgba(255, 248, 240, 0.98);
+    }
+
+    .name-block .last-name {
+      display: block;
+      margin-top: clamp(0rem, 0.35vw, 0.25rem);
+      font-family: var(--display-italic);
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.92;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: rgba(255, 241, 224, 0.92);
+      display: inline-block;
+      transform-origin: left center;
+      transform: translate(-2%, -12%) rotate(-5deg);
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      margin-top: clamp(1rem, 2vw, 1.5rem);
+      font-size: clamp(0.84rem, 1.15vw, 1.05rem);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 300;
+      justify-content: center;
+      color: rgba(255, 239, 214, 0.82);
+    }
+
+    .nav-shell {
+      position: absolute;
+      top: clamp(1rem, 2vw, 2rem);
+      right: clamp(1rem, 2vw, 2rem);
+      bottom: clamp(1rem, 2vw, 2rem);
+      width: var(--panel-width);
+      max-width: calc(100vw - 2rem);
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-end;
+      z-index: 2;
+    }
+
+    .glass-panel {
+      width: 100%;
+      height: 100%;
+      padding: clamp(0.9rem, 1.6vw, 1.35rem);
+      background: linear-gradient(180deg, rgba(16, 8, 5, 0.58), rgba(9, 5, 3, 0.44));
+      background-color: var(--bg-soft);
+      border: 1px solid var(--line-warm);
+      border-radius: 1.4rem;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+        inset 0 0 28px rgba(255, 190, 100, 0.08),
+        0 28px 60px rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(18px) saturate(125%);
+      -webkit-backdrop-filter: blur(18px) saturate(125%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .glass-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 214, 148, 0.08), transparent 20%),
+        radial-gradient(circle at top right, rgba(255, 202, 132, 0.1), transparent 26%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .nav-list {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .nav-group {
+      --group-height: 4.75rem;
+      display: grid;
+      grid-template-rows: var(--group-height) min-content;
+      transition:
+        grid-template-rows var(--ease),
+        opacity var(--ease),
+        transform var(--ease),
+        margin var(--ease);
+      opacity: 1;
+      transform: translateY(0);
+      margin: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-group:last-child {
+      border-bottom: 0;
+    }
+
+    .nav-group.collapsed {
+      grid-template-rows: 0 min-content;
+      opacity: 0.04;
+      transform: scaleY(0.94);
+      pointer-events: none;
+      margin: 0;
+    }
+
+    .nav-group.dropdown-open {
+      grid-template-rows: var(--group-height) min-content;
+    }
+
+    .nav-row {
+      min-height: var(--group-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.1rem 0.2rem;
+    }
+
+    .nav-link,
+    .dropdown-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      /* arrow on left, text pushed to right */
+      justify-content: space-between;
+      text-align: right;
+      gap: 1rem;
+      padding: 1rem 0.6rem;
+      border: 0;
+      background: transparent;
+      color: rgba(255, 248, 241, 0.96);
+      text-transform: lowercase;
+      letter-spacing: 0.16em;
+      font-size: clamp(1.04rem, 1.6vw, 1.6rem);
+      font-weight: 300;
+      cursor: pointer;
+      transition:
+        color var(--ease),
+        text-shadow var(--ease),
+        transform var(--ease),
+        opacity var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .dropdown-toggle:hover,
+    .dropdown-toggle:focus-visible,
+    .nav-link.external:hover,
+    .nav-link.external:focus-visible {
+      color: var(--gold-bright);
+      text-shadow: 0 0 16px rgba(240, 204, 130, 0.24);
+      outline: none;
+    }
+
+    .arrow {
+      font-size: 0.9em;
+      line-height: 1;
+      color: rgba(255, 232, 184, 0.72);
+      transition: transform var(--ease), color var(--ease), opacity var(--ease);
+      flex: 0 0 auto;
+    }
+
+    .nav-group.dropdown-open .arrow {
+      transform: rotate(90deg);
+      color: var(--gold);
+    }
+
+    .dropdown-panel {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition:
+        max-height var(--ease),
+        opacity var(--ease),
+        transform var(--ease);
+      transform: translateY(-0.25rem);
+      padding-left: 1rem;
+    }
+
+    .nav-group.dropdown-open .dropdown-panel {
+      max-height: 24rem;
+      opacity: 1;
+      transform: translateY(0);
+      padding-bottom: 0.25rem;
+    }
+
+    .dropdown-list {
+      margin: 0;
+      padding: 0 0 0.35rem 0;
+      list-style: none;
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .dropdown-item {
+      position: relative;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-0.35rem);
+      transition:
+        max-height var(--ease),
+        opacity var(--ease),
+        transform var(--ease),
+        margin var(--ease),
+        padding var(--ease);
+      transition-delay: var(--delay, 0s);
+      padding-right: 0.9rem;
+    }
+
+    .nav-group.dropdown-open .dropdown-item {
+      max-height: 3.25rem;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dropdown-item a {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.8rem;
+      min-height: 2.35rem;
+      padding: 0.3rem 1rem 0.3rem 0.5rem;
+      color: rgba(255, 243, 231, 0.92);
+      font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+      font-weight: 300;
+      letter-spacing: 0.13em;
+      text-transform: lowercase;
+      text-align: right;
+      transition: color var(--ease), text-shadow var(--ease), transform var(--ease);
+      position: relative;
+    }
+
+    .dropdown-item a::before {
+      content: "";
+      position: absolute;
+      right: 0.15rem;
+      top: 50%;
+      width: 0.25rem;
+      height: 1px;
+      background: rgba(255, 216, 145, 0.62);
+      transform: translateY(-50%);
+      box-shadow: 0 0 10px rgba(232, 190, 109, 0.28);
+    }
+
+    .dropdown-item a:hover,
+    .dropdown-item a:focus-visible,
+    .dropdown-item a.active {
+      color: var(--gold-bright);
+      text-shadow: 0 0 14px rgba(240, 204, 130, 0.26);
+      outline: none;
+    }
+
+    .nav-group[data-kind="link"] .nav-row {
+      gap: 0.5rem;
+    }
+
+    .nav-link.external::after,
+    .nav-link[href="system-thinking.html"]::after,
+    .nav-link[href="physical-computations.html"]::after,
+    .nav-link[href="interface.html"]::after {
+      content: "↗";
+      font-size: 0.95em;
+      opacity: 0.8;
+      flex: 0 0 auto;
+    }
+
+    .panel-caption {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        min-height: 100svh;
+        padding-bottom: 1rem;
+      }
+
+      .name-block {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        max-width: 100%;
+        padding-top: clamp(2rem, 12vw, 5rem);
+      }
+
+      .nav-shell {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        max-width: 100%;
+        min-height: 0;
+      }
+
+      .glass-panel {
+        height: auto;
+        min-height: unset;
+        max-height: none;
+      }
+
+      .nav-list {
+        height: auto;
+      }
+
+      .nav-group.collapsed {
+        opacity: 0.18;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        background-position: center top;
+      }
+
+      .glass-panel {
+        border-radius: 1.1rem;
+      }
+
+      .nav-link,
+      .dropdown-toggle {
+        letter-spacing: 0.13em;
+        font-size: 0.92rem;
+      }
+
+      .dropdown-item a {
+        letter-spacing: 0.09em;
+      }
+
+      .meta-row {
+        gap: 0.8rem;
+        letter-spacing: 0.22em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <div class="hero-content">
+      <section class="name-block" aria-label="Swastika Khatri portfolio identity">
+        <span class="first-name">swastika</span>
+        <span class="last-name">khatri</span>
+        <div class="meta-row" aria-label="Portfolio details">
+          <span>semester 2</span>
+          <span>ux | ui</span>
+        </div>
+      </section>
+
+      <aside class="nav-shell" aria-label="Portfolio navigation">
+        <nav class="glass-panel" aria-label="Interactive project navigation">
+          <div class="nav-list" id="navList">
+            <div class="nav-group" data-kind="link">
+              <div class="nav-row">
+                <a class="nav-link" href="system-thinking.html">system thinking</a>
+              </div>
+            </div>
+
+            <div class="nav-group" data-kind="dropdown">
+              <div class="nav-row">
+                <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="dropdown-biophilia" data-dropdown="biophilia">
+                  <span>biophilia</span>
+                  <span class="arrow" aria-hidden="true">›</span>
+                </button>
+              </div>
+              <div class="dropdown-panel" id="dropdown-biophilia">
+                <ul class="dropdown-list">
+                  <li class="dropdown-item" style="--delay: 0.04s"><a href="#">research</a></li>
+                  <li class="dropdown-item" style="--delay: 0.09s"><a href="#">concept map</a></li>
+                  <li class="dropdown-item" style="--delay: 0.14s"><a href="#">moodboard</a></li>
+                  <li class="dropdown-item" style="--delay: 0.19s"><a href="#">final outcome</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="nav-group" data-kind="dropdown">
+              <div class="nav-row">
+                <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="dropdown-creative-ai" data-dropdown="creative-ai">
+                  <span>creative ai</span>
+                  <span class="arrow" aria-hidden="true">›</span>
+                </button>
+              </div>
+              <div class="dropdown-panel" id="dropdown-creative-ai">
+                <ul class="dropdown-list">
+                  <li class="dropdown-item" style="--delay: 0.03s"><a href="#">prompt 01</a></li>
+                  <li class="dropdown-item" style="--delay: 0.06s"><a href="#">prompt 02</a></li>
+                  <li class="dropdown-item" style="--delay: 0.09s"><a href="#">prompt 03</a></li>
+                  <li class="dropdown-item" style="--delay: 0.12s"><a href="#">prompt 04</a></li>
+                  <li class="dropdown-item" style="--delay: 0.15s"><a href="#">exploration 01</a></li>
+                  <li class="dropdown-item" style="--delay: 0.18s"><a href="#">exploration 02</a></li>
+                  <li class="dropdown-item" style="--delay: 0.21s"><a href="#">reflection</a></li>
+                  <li class="dropdown-item" style="--delay: 0.24s"><a href="#">final output</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="nav-group" data-kind="link">
+              <div class="nav-row">
+                <a class="nav-link" href="physical-computations.html">physical computations</a>
+              </div>
+            </div>
+
+            <div class="nav-group" data-kind="link">
+              <div class="nav-row">
+                <a class="nav-link" href="interface.html">interface</a>
+              </div>
+            </div>
+
+            <div class="nav-group" data-kind="link">
+              <div class="nav-row">
+                <a class="nav-link external" href="YOUR_MAGAZINE_LINK_HERE" target="_blank" rel="noopener noreferrer">sketches</a>
+              </div>
+            </div>
+
+            <div class="nav-group" data-kind="dropdown">
+              <div class="nav-row">
+                <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="dropdown-visits" data-dropdown="visits">
+                  <span>visits</span>
+                  <span class="arrow" aria-hidden="true">›</span>
+                </button>
+              </div>
+              <div class="dropdown-panel" id="dropdown-visits">
+                <ul class="dropdown-list">
+                  <li class="dropdown-item" style="--delay: 0.05s"><a href="#">visit 01</a></li>
+                  <li class="dropdown-item" style="--delay: 0.1s"><a href="#">visit 02</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const navList = document.getElementById('navList');
+    const groups = Array.from(navList.querySelectorAll('.nav-group'));
+    const dropdownButtons = Array.from(navList.querySelectorAll('.dropdown-toggle'));
+    let openDropdownId = null;
+
+    function syncNavigation() {
+      const openIndex = openDropdownId
+        ? groups.findIndex((group) => group.querySelector(`[data-dropdown="${openDropdownId}"]`))
+        : -1;
+
+      groups.forEach((group, index) => {
+        const isDropdownGroup = group.dataset.kind === 'dropdown';
+        const button = group.querySelector('.dropdown-toggle');
+        const isOpen = isDropdownGroup && group.querySelector(`[data-dropdown="${openDropdownId}"]`);
+
+        group.classList.toggle('dropdown-open', Boolean(isOpen));
+        group.classList.toggle('collapsed', openIndex !== -1 && index > openIndex);
+
+        if (button) {
+          button.setAttribute('aria-expanded', String(Boolean(isOpen)));
+        }
+      });
+    }
+
+    function toggleDropdown(dropdownId) {
+      openDropdownId = openDropdownId === dropdownId ? null : dropdownId;
+      syncNavigation();
+    }
+
+    dropdownButtons.forEach((button) => {
+      button.addEventListener('click', () => toggleDropdown(button.dataset.dropdown));
+    });
+
+    navList.addEventListener('click', (event) => {
+      const anchor = event.target.closest('a[href="#"]');
+      if (!anchor) {
+        return;
+      }
+      event.preventDefault();
+      anchor.classList.add('active');
+      setTimeout(() => anchor.classList.remove('active'), 650);
+    });
+
+    syncNavigation();
+  </script>
+</body>
+</html>
