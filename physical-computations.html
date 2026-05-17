@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Physical computation</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c0908;
+      --line: rgba(255, 236, 212, 0.22);
+      --panel: rgba(255, 255, 255, 0.04);
+      --text: #fff5ea;
+      --accent: #f0cc82;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .back-link {
+      position: fixed;
+      top: 0.85rem;
+      left: 0.9rem;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 204, 130, 0.6);
+      color: var(--accent);
+      outline: none;
+    }
+
+    .viewer {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .fallback {
+      margin: 1rem;
+      font-size: 0.95rem;
+      color: rgba(255, 245, 234, 0.85);
+    }
+
+    .fallback a {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="index.html">← back</a>
+
+    <object class="viewer" data="Physical%20computation.pdf" type="application/pdf" aria-label="Physical computation PDF">
+      <iframe class="viewer" src="Physical%20computation.pdf" title="Physical computation PDF"></iframe>
+      <p class="fallback">Your browser cannot display this PDF inline. <a href="Physical%20computation.pdf" target="_blank" rel="noopener noreferrer">Open Physical computation PDF</a>.</p>
+    </object>
+  </main>
+</body>
+</html>

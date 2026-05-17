@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>loRa model training</title>
+  <style>
+    :root {
+      --bg: #120d0b;
+      --panel: rgba(255, 246, 235, 0.06);
+      --line: rgba(255, 232, 204, 0.12);
+      --text: rgba(255, 248, 240, 0.96);
+      --muted: rgba(255, 236, 214, 0.7);
+      --accent: #f0cc82;
+      --shadow: rgba(0, 0, 0, 0.35);
+      --content-width: min(92vw, 56rem);
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      min-height: 100%;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top, rgba(240, 204, 130, 0.14), transparent 28%),
+        linear-gradient(180deg, #160f0d 0%, #0d0908 100%);
+      color: var(--text);
+    }
+
+    body {
+      font-family: var(--sans);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100svh;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .back-link {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      backdrop-filter: blur(14px) saturate(120%);
+      -webkit-backdrop-filter: blur(14px) saturate(120%);
+      box-shadow: 0 18px 40px var(--shadow);
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+      font-size: 0.9rem;
+      transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 204, 130, 0.34);
+      color: var(--accent);
+      outline: none;
+    }
+
+    .content {
+      width: 100vw;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .image-stack {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      margin: 0 !important;
+      padding: 0 !important;
+      gap: 0 !important;
+    }
+
+    .image-card {
+      width: 100vw;
+      height: 100vh;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .image-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0 !important;
+      padding: 0 !important;
+      object-fit: cover;
+      object-position: center center;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="index.html">← back</a>
+
+    <section class="content" aria-label="loRa model training images">
+      <div class="image-stack">
+        <figure class="image-card">
+          <img src="creative%20ai/lora%20model/1.jpg" alt="Lora model training image 1">
+        </figure>
+
+        <figure class="image-card">
+          <img src="creative%20ai/lora%20model/2.jpg" alt="Lora model training image 2">
+        </figure>
+
+        <figure class="image-card">
+          <img src="creative%20ai/lora%20model/3.jpg" alt="Lora model training image 3">
+        </figure>
+
+        <figure class="image-card">
+          <img src="creative%20ai/lora%20model/4.jpg" alt="Lora model training image 4">
+        </figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
